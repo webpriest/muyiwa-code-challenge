@@ -1,67 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+1. Clone the Repo at https://github.com/Ademuyi001/laravel-assignment.git
+2. Run `composer install`
+3. Run `npm install` for dependencies
+4. Create a database `laravel_assignment`, and run `php artisan migrate` to migrate the database
+5. Use an API client (e.g Postman), and use the following end points;
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---------------
+User Model
+---------------
+POST http://localhost:8000/api/auth/register (register user)
+	- firstname: 
+	- middlename: 
+	- lastname:
+	- email:
+	- phone:
+	- password:
+	- password_confirmation:
+	- avatar: (type of file)
+	- is_disabled: false
+POST http://localhost:8000/api/auth/login (login user)
+	- email: aderintomuyiwa@gmail.com
+	- password: admin@12
+	Returns access_token and user data
+	Copy access token and create Authorization Bearer token on Postman
 
-## About Laravel
+-----------------
+Asset Model (for authenticated user)
+-----------------
+GET http://localhost:8000/api/assets (get all assets)
+GET http://localhost:8000/api/assets/{asset} (get single record)
+POST http://localhost:8000/api/assets (create new record)
+	- type:
+	- serial_number:
+	- description:
+	- mode:
+	- picture_path:
+	- purchase_date:
+	- start_use_date:
+	- purchase_price:
+	- warranty_expiry_date:
+	- degradation:
+	- currency_value:
+	- location:
+PATCH http://localhost:8000/api/assets/{asset} (update record)
+	- id:
+	- type:
+	- serial_number:
+	- description:
+	- mode:
+	- picture_path:
+	- purchase_date:
+	- start_use_date:
+	- purchase_price:
+	- warranty_expiry_date:
+	- degradation:
+	- currency_value:
+	- location:
+DELETE http://localhost:8000/api/assets/{asset} (delete record)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-------------------
+Vendor
+-------------------
+GET http://localhost:8000/api/vendors (get all vendors)
+GET http://localhost:8000/api/vendors/{vendor} (get single record)
+POST http://localhost:8000/api/vendors (create new record)
+	- name:
+	- category:
+	
+PATCH http://localhost:8000/api/vendors/{vendor} (update record)
+	- id:
+	- name:
+	- category:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+DELETE http://localhost:8000/api/vendors/{vendor} (delete record)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-"# muyiwa-code-challenge" 
+-------------------
+Asset Assignment
+-------------------
+GET http://localhost:8000/api/asset-assignments (get all vendors)
+GET http://localhost:8000/api/asset-assignments/{asset-assignment} (get single record)
+POST http://localhost:8000/api/asset-assignments (create new record)
+	- asset_id:
+	- assignment_date:
+	- due_date:
+	- status:
+	- is_due:
+	- assigned_by:
+	- assigned_user_id:
+	
+PATCH http://localhost:8000/api/asset-assignments/{asset-assignment} (update record)
+	- id:
+	- asset_id:
+	- assignment_date:
+	- due_date:
+	- status:
+	- is_due:
+	- assigned_by:
+	- assigned_user_id:
+	
+DELETE http://localhost:8000/api/asset-assignments/{asset-assignment} (delete record)
