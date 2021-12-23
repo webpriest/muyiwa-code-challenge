@@ -21,4 +21,16 @@ class Asset extends Model
     {
         return $this->picture_path ? asset('storage/'.$this->picture_path) : '';
     }
+
+    public static function booted()
+    {
+        static::creating(function($asset){
+            $asset->serial_number = rand(1000000, 9999999);
+        });
+    }
+
+    public function asset_assignments()
+    {
+        return $this->hasMany(AssetAssignment::class);
+    }
 }

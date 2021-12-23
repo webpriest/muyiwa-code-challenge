@@ -14,6 +14,9 @@ class VendorResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'name' => $this->name,
+            'category' => $this->category,
+        ];
     }
 }

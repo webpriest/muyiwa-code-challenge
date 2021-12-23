@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vendor;
+use App\Http\Resources\VendorResource;
 use App\Http\Requests\StoreVendorRequest;
 use App\Http\Requests\UpdateVendorRequest;
 
@@ -15,7 +16,7 @@ class VendorController extends Controller
      */
     public function index()
     {
-        //
+        return VendorResource::collection(Vendor::all());
     }
 
     /**
@@ -26,7 +27,9 @@ class VendorController extends Controller
      */
     public function store(StoreVendorRequest $request)
     {
-        //
+        $vendor = Vendor::create($request->all());
+
+        return new VendorResource($vendor);
     }
 
     /**
@@ -37,7 +40,7 @@ class VendorController extends Controller
      */
     public function show(Vendor $vendor)
     {
-        //
+        return new VendorResource($vendor);
     }
 
     /**
@@ -60,6 +63,8 @@ class VendorController extends Controller
      */
     public function destroy(Vendor $vendor)
     {
-        //
+        $vendor->delete();
+
+        return response('Vendor deleted', 204);
     }
 }

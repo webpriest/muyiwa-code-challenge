@@ -47,7 +47,7 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     protected $appends = [
         'full_name'
     ];
@@ -57,7 +57,12 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getFullNameAttribute()
     {
-        return "{$this->firstname} {$this->lastname}";
+        return "{$this->firstname} {$this->middlename} {$this->lastname}";
+    }
+
+    public function asset_assignments()
+    {
+        return $this->hasMany(AssetAssignment::classs);
     }
 
     /**

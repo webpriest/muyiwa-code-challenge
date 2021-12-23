@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssetAssignment;
+use App\Http\Resources\AssetAssignmentResource;
 use App\Http\Requests\StoreAssetAssignmentRequest;
 use App\Http\Requests\UpdateAssetAssignmentRequest;
 
@@ -15,7 +16,7 @@ class AssetAssignmentController extends Controller
      */
     public function index()
     {
-        //
+        return AssetAssignmentResource::collection(AssetAssignment::all());
     }
 
     /**
@@ -26,7 +27,9 @@ class AssetAssignmentController extends Controller
      */
     public function store(StoreAssetAssignmentRequest $request)
     {
-        //
+        $assetAssignment = AssetAssignment::create($request->all());
+
+        return new AssetAssignmentResource($assetAssignment);
     }
 
     /**
@@ -37,7 +40,7 @@ class AssetAssignmentController extends Controller
      */
     public function show(AssetAssignment $assetAssignment)
     {
-        //
+        return new AssetAssignmentResource($assetAssignment);
     }
 
     /**
@@ -49,7 +52,9 @@ class AssetAssignmentController extends Controller
      */
     public function update(UpdateAssetAssignmentRequest $request, AssetAssignment $assetAssignment)
     {
-        //
+        $assetAssignment->update($request->all());
+
+        return $assetAssignment;
     }
 
     /**
@@ -60,6 +65,8 @@ class AssetAssignmentController extends Controller
      */
     public function destroy(AssetAssignment $assetAssignment)
     {
-        //
+        $assetAssignment->delete();
+
+        return response('Asset Assignment deleted', 204);
     }
 }
